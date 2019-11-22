@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://Mfe" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Mfe" xmlns:intf="http://Mfe" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://Mfe" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="consultarNumeroSessao">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_luiNumSessaoConsultada" type="xsd:int"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarNumeroSessaoResponse">
+    <complexType>
+     <sequence>
+      <element name="consultarNumeroSessaoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="trocarCodigoDeAtivacao">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_Opcao" type="xsd:int"/>
+      <element name="iv_pcNovoCod" type="xsd:string"/>
+      <element name="iv_pcConfirmaNovoCod" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="trocarCodigoDeAtivacaoResponse">
+    <complexType>
+     <sequence>
+      <element name="trocarCodigoDeAtivacaoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelarUltimaVenda">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_pcChaveCfe" type="xsd:string"/>
+      <element name="iv_pcDadosCanc" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelarUltimaVendaResponse">
+    <complexType>
+     <sequence>
+      <element name="cancelarUltimaVendaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="enviarDadosVenda">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_pcDadosVenda" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="enviarDadosVendaResponse">
+    <complexType>
+     <sequence>
+      <element name="enviarDadosVendaReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarSAT">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarSATResponse">
+    <complexType>
+     <sequence>
+      <element name="consultarSATReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ativarSAT">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_SubCmd" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_pcCnpj" type="xsd:string"/>
+      <element name="iv_UF" type="xsd:int"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ativarSATResponse">
+    <complexType>
+     <sequence>
+      <element name="ativarSATReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="desbloquearSAT">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="desbloquearSATResponse">
+    <complexType>
+     <sequence>
+      <element name="desbloquearSATReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="enviarStatusAC">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_pcFabricante" type="xsd:string"/>
+      <element name="iv_pcVersaoAC" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="enviarStatusACResponse">
+    <complexType>
+     <sequence>
+      <element name="enviarStatusACReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="bloquearSAT">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="bloquearSATResponse">
+    <complexType>
+     <sequence>
+      <element name="bloquearSATReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="extrairLogs">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="extrairLogsResponse">
+    <complexType>
+     <sequence>
+      <element name="extrairLogsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="testeFimAFim">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_pcDadosVenda" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="testeFimAFimResponse">
+    <complexType>
+     <sequence>
+      <element name="testeFimAFimReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="comunicarCertificadoICPBRASIL">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_pcCertificado" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="comunicarCertificadoICPBRASILResponse">
+    <complexType>
+     <sequence>
+      <element name="comunicarCertificadoICPBRASILReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarStatusOperacionalMFE">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarStatusOperacionalMFEResponse">
+    <complexType>
+     <sequence>
+      <element name="consultarStatusOperacionalMFEReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarStatusOperacional">
+    <complexType>
+     <sequence>
+      <element name="iv_NumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="consultarStatusOperacionalResponse">
+    <complexType>
+     <sequence>
+      <element name="consultarStatusOperacionalReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="configurarInterfaceDeRede">
+    <complexType>
+     <sequence>
+      <element name="iv_iNumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_pcDadosConfiguracao" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="configurarInterfaceDeRedeResponse">
+    <complexType>
+     <sequence>
+      <element name="configurarInterfaceDeRedeReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="configurarInterfaceDeRedeMFE">
+    <complexType>
+     <sequence>
+      <element name="iv_iNumSessao" type="xsd:int"/>
+      <element name="iv_pcCodAtivacao" type="xsd:string"/>
+      <element name="iv_pcDadosConfiguracao" type="xsd:string"/>
+      <element name="iv_directory" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="configurarInterfaceDeRedeMFEResponse">
+    <complexType>
+     <sequence>
+      <element name="configurarInterfaceDeRedeMFEReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="desbloquearSATResponse">
+
+      <wsdl:part element="impl:desbloquearSATResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="enviarStatusACRequest">
+
+      <wsdl:part element="impl:enviarStatusAC" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="comunicarCertificadoICPBRASILRequest">
+
+      <wsdl:part element="impl:comunicarCertificadoICPBRASIL" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="trocarCodigoDeAtivacaoResponse">
+
+      <wsdl:part element="impl:trocarCodigoDeAtivacaoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarNumeroSessaoRequest">
+
+      <wsdl:part element="impl:consultarNumeroSessao" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="bloquearSATRequest">
+
+      <wsdl:part element="impl:bloquearSAT" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testeFimAFimResponse">
+
+      <wsdl:part element="impl:testeFimAFimResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="bloquearSATResponse">
+
+      <wsdl:part element="impl:bloquearSATResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ativarSATResponse">
+
+      <wsdl:part element="impl:ativarSATResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="extrairLogsRequest">
+
+      <wsdl:part element="impl:extrairLogs" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ativarSATRequest">
+
+      <wsdl:part element="impl:ativarSAT" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="configurarInterfaceDeRedeResponse">
+
+      <wsdl:part element="impl:configurarInterfaceDeRedeResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarSATResponse">
+
+      <wsdl:part element="impl:consultarSATResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarNumeroSessaoResponse">
+
+      <wsdl:part element="impl:consultarNumeroSessaoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelarUltimaVendaResponse">
+
+      <wsdl:part element="impl:cancelarUltimaVendaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="enviarStatusACResponse">
+
+      <wsdl:part element="impl:enviarStatusACResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelarUltimaVendaRequest">
+
+      <wsdl:part element="impl:cancelarUltimaVenda" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarStatusOperacionalMFERequest">
+
+      <wsdl:part element="impl:consultarStatusOperacionalMFE" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="desbloquearSATRequest">
+
+      <wsdl:part element="impl:desbloquearSAT" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarStatusOperacionalMFEResponse">
+
+      <wsdl:part element="impl:consultarStatusOperacionalMFEResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarSATRequest">
+
+      <wsdl:part element="impl:consultarSAT" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="trocarCodigoDeAtivacaoRequest">
+
+      <wsdl:part element="impl:trocarCodigoDeAtivacao" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="configurarInterfaceDeRedeMFERequest">
+
+      <wsdl:part element="impl:configurarInterfaceDeRedeMFE" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="comunicarCertificadoICPBRASILResponse">
+
+      <wsdl:part element="impl:comunicarCertificadoICPBRASILResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarStatusOperacionalRequest">
+
+      <wsdl:part element="impl:consultarStatusOperacional" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultarStatusOperacionalResponse">
+
+      <wsdl:part element="impl:consultarStatusOperacionalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="configurarInterfaceDeRedeRequest">
+
+      <wsdl:part element="impl:configurarInterfaceDeRede" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="extrairLogsResponse">
+
+      <wsdl:part element="impl:extrairLogsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="enviarDadosVendaResponse">
+
+      <wsdl:part element="impl:enviarDadosVendaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="configurarInterfaceDeRedeMFEResponse">
+
+      <wsdl:part element="impl:configurarInterfaceDeRedeMFEResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="enviarDadosVendaRequest">
+
+      <wsdl:part element="impl:enviarDadosVenda" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testeFimAFimRequest">
+
+      <wsdl:part element="impl:testeFimAFim" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Call_mfe">
+
+      <wsdl:operation name="consultarNumeroSessao">
+
+         <wsdl:input message="impl:consultarNumeroSessaoRequest" name="consultarNumeroSessaoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:consultarNumeroSessaoResponse" name="consultarNumeroSessaoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="trocarCodigoDeAtivacao">
+
+         <wsdl:input message="impl:trocarCodigoDeAtivacaoRequest" name="trocarCodigoDeAtivacaoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:trocarCodigoDeAtivacaoResponse" name="trocarCodigoDeAtivacaoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelarUltimaVenda">
+
+         <wsdl:input message="impl:cancelarUltimaVendaRequest" name="cancelarUltimaVendaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cancelarUltimaVendaResponse" name="cancelarUltimaVendaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="enviarDadosVenda">
+
+         <wsdl:input message="impl:enviarDadosVendaRequest" name="enviarDadosVendaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:enviarDadosVendaResponse" name="enviarDadosVendaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarSAT">
+
+         <wsdl:input message="impl:consultarSATRequest" name="consultarSATRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:consultarSATResponse" name="consultarSATResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ativarSAT">
+
+         <wsdl:input message="impl:ativarSATRequest" name="ativarSATRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ativarSATResponse" name="ativarSATResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="desbloquearSAT">
+
+         <wsdl:input message="impl:desbloquearSATRequest" name="desbloquearSATRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:desbloquearSATResponse" name="desbloquearSATResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="enviarStatusAC">
+
+         <wsdl:input message="impl:enviarStatusACRequest" name="enviarStatusACRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:enviarStatusACResponse" name="enviarStatusACResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="bloquearSAT">
+
+         <wsdl:input message="impl:bloquearSATRequest" name="bloquearSATRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:bloquearSATResponse" name="bloquearSATResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="extrairLogs">
+
+         <wsdl:input message="impl:extrairLogsRequest" name="extrairLogsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:extrairLogsResponse" name="extrairLogsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="testeFimAFim">
+
+         <wsdl:input message="impl:testeFimAFimRequest" name="testeFimAFimRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:testeFimAFimResponse" name="testeFimAFimResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="comunicarCertificadoICPBRASIL">
+
+         <wsdl:input message="impl:comunicarCertificadoICPBRASILRequest" name="comunicarCertificadoICPBRASILRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:comunicarCertificadoICPBRASILResponse" name="comunicarCertificadoICPBRASILResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarStatusOperacionalMFE">
+
+         <wsdl:input message="impl:consultarStatusOperacionalMFERequest" name="consultarStatusOperacionalMFERequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:consultarStatusOperacionalMFEResponse" name="consultarStatusOperacionalMFEResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarStatusOperacional">
+
+         <wsdl:input message="impl:consultarStatusOperacionalRequest" name="consultarStatusOperacionalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:consultarStatusOperacionalResponse" name="consultarStatusOperacionalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="configurarInterfaceDeRede">
+
+         <wsdl:input message="impl:configurarInterfaceDeRedeRequest" name="configurarInterfaceDeRedeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:configurarInterfaceDeRedeResponse" name="configurarInterfaceDeRedeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="configurarInterfaceDeRedeMFE">
+
+         <wsdl:input message="impl:configurarInterfaceDeRedeMFERequest" name="configurarInterfaceDeRedeMFERequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:configurarInterfaceDeRedeMFEResponse" name="configurarInterfaceDeRedeMFEResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="Call_mfeSoapBinding" type="impl:Call_mfe">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="consultarNumeroSessao">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultarNumeroSessaoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultarNumeroSessaoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="trocarCodigoDeAtivacao">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="trocarCodigoDeAtivacaoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="trocarCodigoDeAtivacaoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelarUltimaVenda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelarUltimaVendaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelarUltimaVendaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="enviarDadosVenda">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="enviarDadosVendaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="enviarDadosVendaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarSAT">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultarSATRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultarSATResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ativarSAT">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ativarSATRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ativarSATResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="desbloquearSAT">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="desbloquearSATRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="desbloquearSATResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="enviarStatusAC">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="enviarStatusACRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="enviarStatusACResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="bloquearSAT">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="bloquearSATRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="bloquearSATResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="extrairLogs">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="extrairLogsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="extrairLogsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="testeFimAFim">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="testeFimAFimRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="testeFimAFimResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="comunicarCertificadoICPBRASIL">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="comunicarCertificadoICPBRASILRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="comunicarCertificadoICPBRASILResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarStatusOperacionalMFE">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultarStatusOperacionalMFERequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultarStatusOperacionalMFEResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="consultarStatusOperacional">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultarStatusOperacionalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultarStatusOperacionalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="configurarInterfaceDeRede">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="configurarInterfaceDeRedeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="configurarInterfaceDeRedeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="configurarInterfaceDeRedeMFE">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="configurarInterfaceDeRedeMFERequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="configurarInterfaceDeRedeMFEResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="Call_mfeService">
+
+      <wsdl:port binding="impl:Call_mfeSoapBinding" name="Call_mfe">
+
+         <wsdlsoap:address location="http://localhost:8080/Service_mfe2/services/Call_mfe"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

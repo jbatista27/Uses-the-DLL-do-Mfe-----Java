@@ -1,0 +1,157 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\GFX\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\Service_mfe2\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="Call_mfe" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="consultarNumeroSessao" qname="ns1:consultarNumeroSessao" returnQName="ns1:consultarNumeroSessaoReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:iv_NumSessao" type="xsd:int"/>
+   <ns2:parameter qname="ns1:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns2:parameter qname="ns1:iv_luiNumSessaoConsultada" type="xsd:int"/>
+   <ns2:parameter qname="ns1:iv_directory" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="trocarCodigoDeAtivacao" qname="ns2:trocarCodigoDeAtivacao" returnQName="ns2:trocarCodigoDeAtivacaoReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns2:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns2:iv_Opcao" type="xsd:int"/>
+   <ns1:parameter qname="ns2:iv_pcNovoCod" type="xsd:string"/>
+   <ns1:parameter qname="ns2:iv_pcConfirmaNovoCod" type="xsd:string"/>
+   <ns1:parameter qname="ns2:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="cancelarUltimaVenda" qname="ns3:cancelarUltimaVenda" returnQName="ns3:cancelarUltimaVendaReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns3:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns3:iv_pcChaveCfe" type="xsd:string"/>
+   <ns1:parameter qname="ns3:iv_pcDadosCanc" type="xsd:string"/>
+   <ns1:parameter qname="ns3:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="enviarDadosVenda" qname="ns4:enviarDadosVenda" returnQName="ns4:enviarDadosVendaReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns4:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns4:iv_pcDadosVenda" type="xsd:string"/>
+   <ns1:parameter qname="ns4:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="consultarSAT" qname="ns5:consultarSAT" returnQName="ns5:consultarSATReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns5:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="ativarSAT" qname="ns6:ativarSAT" returnQName="ns6:ativarSATReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns6:iv_SubCmd" type="xsd:int"/>
+   <ns1:parameter qname="ns6:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns6:iv_pcCnpj" type="xsd:string"/>
+   <ns1:parameter qname="ns6:iv_UF" type="xsd:int"/>
+   <ns1:parameter qname="ns6:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="desbloquearSAT" qname="ns7:desbloquearSAT" returnQName="ns7:desbloquearSATReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns7:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns7:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="enviarStatusAC" qname="ns8:enviarStatusAC" returnQName="ns8:enviarStatusACReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns8:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns8:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns8:iv_pcFabricante" type="xsd:string"/>
+   <ns1:parameter qname="ns8:iv_pcVersaoAC" type="xsd:string"/>
+   <ns1:parameter qname="ns8:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="bloquearSAT" qname="ns9:bloquearSAT" returnQName="ns9:bloquearSATReturn" returnType="xsd:string" soapAction="" xmlns:ns9="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns9:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns9:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="extrairLogs" qname="ns10:extrairLogs" returnQName="ns10:extrairLogsReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns10:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns10:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="testeFimAFim" qname="ns11:testeFimAFim" returnQName="ns11:testeFimAFimReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns11:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns11:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns11:iv_pcDadosVenda" type="xsd:string"/>
+   <ns1:parameter qname="ns11:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="comunicarCertificadoICPBRASIL" qname="ns12:comunicarCertificadoICPBRASIL" returnQName="ns12:comunicarCertificadoICPBRASILReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns12:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns12:iv_pcCertificado" type="xsd:string"/>
+   <ns1:parameter qname="ns12:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="consultarStatusOperacionalMFE" qname="ns13:consultarStatusOperacionalMFE" returnQName="ns13:consultarStatusOperacionalMFEReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns13:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns13:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="consultarStatusOperacional" qname="ns14:consultarStatusOperacional" returnQName="ns14:consultarStatusOperacionalReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:iv_NumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns14:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns14:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="configurarInterfaceDeRede" qname="ns15:configurarInterfaceDeRede" returnQName="ns15:configurarInterfaceDeRedeReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns15:iv_iNumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns15:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns15:iv_pcDadosConfiguracao" type="xsd:string"/>
+   <ns1:parameter qname="ns15:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="configurarInterfaceDeRedeMFE" qname="ns16:configurarInterfaceDeRedeMFE" returnQName="ns16:configurarInterfaceDeRedeMFEReturn" returnType="xsd:string" soapAction="" xmlns:ns16="http://Mfe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns16:iv_iNumSessao" type="xsd:int"/>
+   <ns1:parameter qname="ns16:iv_pcCodAtivacao" type="xsd:string"/>
+   <ns1:parameter qname="ns16:iv_pcDadosConfiguracao" type="xsd:string"/>
+   <ns1:parameter qname="ns16:iv_directory" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="consultarNumeroSessao cancelarUltimaVenda consultarStatusOperacional configurarInterfaceDeRede enviarDadosVenda comunicarCertificadoICPBRASIL extrairLogs configurarInterfaceDeRedeMFE bloquearSAT testeFimAFim trocarCodigoDeAtivacao consultarStatusOperacionalMFE consultarSAT ativarSAT desbloquearSAT enviarStatusAC"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Call_mfe"/>
+  <ns1:parameter name="className" value="Mfe.Call_mfe"/>
+  <ns1:parameter name="wsdlServicePort" value="Call_mfe"/>
+  <ns1:parameter name="schemaQualified" value="http://Mfe"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://Mfe"/>
+  <ns1:parameter name="wsdlServiceElement" value="Call_mfeService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

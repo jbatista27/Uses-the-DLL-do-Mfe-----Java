@@ -1,0 +1,121 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from Call_mfeService WSDL service -->
+
+  <service name="Call_mfe" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Mfe"/>
+      <parameter name="wsdlServiceElement" value="Call_mfeService"/>
+      <parameter name="schemaQualified" value="http://Mfe"/>
+      <parameter name="wsdlServicePort" value="Call_mfe"/>
+      <parameter name="className" value="Mfe.Call_mfeSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Call_mfe"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="consultarNumeroSessao" qname="operNS:consultarNumeroSessao" xmlns:operNS="http://Mfe" returnQName="retNS:consultarNumeroSessaoReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_luiNumSessaoConsultada" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="trocarCodigoDeAtivacao" qname="operNS:trocarCodigoDeAtivacao" xmlns:operNS="http://Mfe" returnQName="retNS:trocarCodigoDeAtivacaoReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_Opcao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcNovoCod" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcConfirmaNovoCod" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="cancelarUltimaVenda" qname="operNS:cancelarUltimaVenda" xmlns:operNS="http://Mfe" returnQName="retNS:cancelarUltimaVendaReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcChaveCfe" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcDadosCanc" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="enviarDadosVenda" qname="operNS:enviarDadosVenda" xmlns:operNS="http://Mfe" returnQName="retNS:enviarDadosVendaReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcDadosVenda" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="consultarSAT" qname="operNS:consultarSAT" xmlns:operNS="http://Mfe" returnQName="retNS:consultarSATReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="ativarSAT" qname="operNS:ativarSAT" xmlns:operNS="http://Mfe" returnQName="retNS:ativarSATReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_SubCmd" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCnpj" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_UF" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="desbloquearSAT" qname="operNS:desbloquearSAT" xmlns:operNS="http://Mfe" returnQName="retNS:desbloquearSATReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="enviarStatusAC" qname="operNS:enviarStatusAC" xmlns:operNS="http://Mfe" returnQName="retNS:enviarStatusACReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcFabricante" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcVersaoAC" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="bloquearSAT" qname="operNS:bloquearSAT" xmlns:operNS="http://Mfe" returnQName="retNS:bloquearSATReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="extrairLogs" qname="operNS:extrairLogs" xmlns:operNS="http://Mfe" returnQName="retNS:extrairLogsReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="testeFimAFim" qname="operNS:testeFimAFim" xmlns:operNS="http://Mfe" returnQName="retNS:testeFimAFimReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcDadosVenda" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="comunicarCertificadoICPBRASIL" qname="operNS:comunicarCertificadoICPBRASIL" xmlns:operNS="http://Mfe" returnQName="retNS:comunicarCertificadoICPBRASILReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCertificado" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="consultarStatusOperacionalMFE" qname="operNS:consultarStatusOperacionalMFE" xmlns:operNS="http://Mfe" returnQName="retNS:consultarStatusOperacionalMFEReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="consultarStatusOperacional" qname="operNS:consultarStatusOperacional" xmlns:operNS="http://Mfe" returnQName="retNS:consultarStatusOperacionalReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_NumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="configurarInterfaceDeRede" qname="operNS:configurarInterfaceDeRede" xmlns:operNS="http://Mfe" returnQName="retNS:configurarInterfaceDeRedeReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_iNumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcDadosConfiguracao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="configurarInterfaceDeRedeMFE" qname="operNS:configurarInterfaceDeRedeMFE" xmlns:operNS="http://Mfe" returnQName="retNS:configurarInterfaceDeRedeMFEReturn" xmlns:retNS="http://Mfe" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:iv_iNumSessao" xmlns:pns="http://Mfe" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcCodAtivacao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_pcDadosConfiguracao" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:iv_directory" xmlns:pns="http://Mfe" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="consultarNumeroSessao cancelarUltimaVenda consultarStatusOperacional configurarInterfaceDeRede enviarDadosVenda comunicarCertificadoICPBRASIL extrairLogs configurarInterfaceDeRedeMFE bloquearSAT testeFimAFim trocarCodigoDeAtivacao consultarStatusOperacionalMFE consultarSAT ativarSAT desbloquearSAT enviarStatusAC"/>
+
+  </service>
+</deployment>
